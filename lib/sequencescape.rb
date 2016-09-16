@@ -15,6 +15,7 @@ require 'sequencescape/project'
 require 'sequencescape/asset'
 require 'sequencescape/barcoded_asset'
 require 'sequencescape/asset_group'
+require 'sequencescape/extraction_attribute'
 
 require 'sequencescape/tube_purpose'
 require 'sequencescape/library_tube'
