@@ -1,5 +1,4 @@
 require 'uri'
-
 class Sequencescape::Api::ConnectionFactory
   ConnectionError = Class.new(::Sequencescape::Api::Error)
 
