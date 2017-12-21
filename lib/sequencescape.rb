@@ -23,6 +23,7 @@ require 'sequencescape/multiplexed_library_tube'
 require 'sequencescape/sample_tube'
 require 'sequencescape/sample'
 
+require 'sequencescape/comment'
 require 'sequencescape/plate'
 require 'sequencescape/plate_purpose'
 require 'sequencescape/well'
@@ -32,10 +33,13 @@ require 'sequencescape/qc_file'
 require 'sequencescape/asset_audit'
 
 require 'sequencescape/submission'
+require 'sequencescape/submission_pool'
 require 'sequencescape/order_template'
 require 'sequencescape/order'
 
 require 'sequencescape/search'
+require 'sequencescape/work_completion'
+require 'sequencescape/custom_metadatum_collection'
 
 # Pulldown API support
 require 'sequencescape/plate_creation'
@@ -48,6 +52,8 @@ require 'sequencescape/transfer_template'
 require 'sequencescape/transfer'
 require 'sequencescape/bulk_transfer'
 require 'sequencescape/tag_layout_template'
+require 'sequencescape/tag_group'
+require 'sequencescape/volume_update'
 require 'sequencescape/tag_layout'
 require 'sequencescape/bait_library_layout'
 require 'sequencescape/barcode_printer'
@@ -66,6 +72,8 @@ require 'sequencescape/qcable_creator'
 require 'sequencescape/qc_decision'
 require 'sequencescape/plate_conversion'
 
+# Events
+require 'sequencescape/library_event'
+
 # Ensure that the I18n stuff has been properly configured
 I18n.config.load_path << File.expand_path(File.join(File.dirname(__FILE__), %w{sequencescape locale en.yml}))
-
