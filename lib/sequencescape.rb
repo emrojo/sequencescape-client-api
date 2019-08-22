@@ -41,6 +41,9 @@ require 'sequencescape/search'
 require 'sequencescape/work_completion'
 require 'sequencescape/custom_metadatum_collection'
 
+require 'sequencescape/transfer_request_collection'
+require 'sequencescape/transfer_request'
+
 # Pulldown API support
 require 'sequencescape/plate_creation'
 require 'sequencescape/pooled_plate_creation'
@@ -71,6 +74,9 @@ require 'sequencescape/plate_template'
 require 'sequencescape/qcable_creator'
 require 'sequencescape/qc_decision'
 require 'sequencescape/plate_conversion'
+
+# Support Extraction
+require 'sequencescape/extraction_attribute'
 
 # Events
 require 'sequencescape/library_event'

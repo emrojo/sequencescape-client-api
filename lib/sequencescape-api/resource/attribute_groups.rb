@@ -7,7 +7,9 @@ module Sequencescape::Api::Resource::Groups
     end
 
     def attribute_group_json(options)
-      Hash[attribute_groups.map { |k,v| [ k.to_s, v.send(:as_json_for_update, options) ] if v.changed? }.compact]
+      attribute_groups.each_with_object({}) do |(k,v), agj|
+        agj[k.to_s] = v.send(:as_json_for_update, options) if v.changed?
+      end
     end
     private :attribute_group_json
 
@@ -29,7 +31,11 @@ module Sequencescape::Api::Resource::Groups
     def as_json_for_update(options)
       super.tap do |json|
         begin
-          json.fetch(json_root).merge!(attribute_group_json(options))
+          if options[:root]
+            json.fetch(json_root).merge!(attribute_group_json(options))
+          else
+            json.merge!(attribute_group_json(options))
+          end
         rescue KeyError => e
           # If we get a key error, append the json to out exception to assist diagnosing issues
           e.message << " in #{json.to_json}"
@@ -69,7 +75,9 @@ class Sequencescape::Api::Resource::Groups::Proxy
     end
 
     def as_json_for_update(options)
-      attribute_group_json(options).merge(Hash[changes.map { |k,(_,v)| [k.to_s, v] }])
+      attribute_group_json(options).tap do |agj|
+        changes.each { |k, (_, v)| agj[k.to_s] = v }
+      end
     end
     private :as_json_for_update
 
